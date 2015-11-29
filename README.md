@@ -12,4 +12,5 @@ To make the code concise and easy understand. I use Lasagne, which is a deep lea
 2. Run preprocess.sh. Note that you should set your own glove path in this script.
 3. Run run.sh
 
+Btw, it is very easy to run the code on GPU, just follow the instructions in Theano website.
 
