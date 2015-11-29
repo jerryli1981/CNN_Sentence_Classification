@@ -155,6 +155,7 @@ if __name__ == '__main__':
     print('=' * 80)
 
     import argparse
+    parser = argparse.ArgumentParser(description="Usage")
     parser.add_argument("--glove",dest="glove",type=str,default=None)
     args = parser.parse_args()
     glove_path = args.glove

@@ -25,10 +25,8 @@ from lasagne.init import GlorotUniform
 
 from utils import read_sequence_dataset, iterate_minibatches_,loadWord2VecMap
 
-
 def build_network_2dconv(args, input_var, target_var, wordEmbeddings, maxlen=60):
 
-    
     print("Building model with 2D Convolution")
 
     vocab_size = wordEmbeddings.shape[1]
@@ -115,16 +113,16 @@ if __name__ == '__main__':
     print("Loading data...")
     base_dir = os.path.dirname(os.path.realpath(__file__))
     data_dir = os.path.join(base_dir, 'data')
-    sick_dir = os.path.join(data_dir, 'sick')
 
-    X_train, X_mask_train, Y_labels_train = read_sequence_dataset(sick_dir, "train")
-    X_dev, X_mask_dev, Y_labels_dev = read_sequence_dataset(sick_dir, "dev")
-    X_test, X_mask_test, Y_labels_test= read_sequence_dataset(sick_dir, "test")
+
+    X_train, X_mask_train, Y_labels_train = read_sequence_dataset(data_dir, "train")
+    X_dev, X_mask_dev, Y_labels_dev = read_sequence_dataset(data_dir, "dev")
+    X_test, X_mask_test, Y_labels_test= read_sequence_dataset(data_dir, "test")
 
     input_var = T.imatrix('inputs')
     target_var = T.fmatrix('targets')
 
-    wordEmbeddings = loadWord2VecMap(os.path.join(sick_dir, 'word2vec.bin'))
+    wordEmbeddings = loadWord2VecMap(os.path.join(data_dir, 'word2vec.bin'))
     wordEmbeddings = wordEmbeddings.astype(np.float32)
 
     train_fn, val_fn = build_network_2dconv(args, input_var, target_var, wordEmbeddings)
