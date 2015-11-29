@@ -57,4 +57,3 @@ if __name__ == "__main__":
 				train_size += 1
 
 	print "train_size %s, dev_size %s"%(train_size, dev_size)
-	print "done"
