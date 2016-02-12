@@ -154,15 +154,11 @@ if __name__ == '__main__':
     print('Preprocessing dataset')
     print('=' * 80)
 
-    import argparse
-    parser = argparse.ArgumentParser(description="Usage")
-    parser.add_argument("--glove",dest="glove",type=str,default=None)
-    args = parser.parse_args()
-    glove_path = args.glove
+    glove_path = "/Users/peng/Develops/NLP-Tools/glove.840B.300d.txt"
 
     base_dir = os.path.dirname(os.path.realpath(__file__))
     data_dir = os.path.join(base_dir, 'data')
-    lib_dir = os.path.join(base_dir, 'lib')
+    lib_dir = os.path.join("/Users/peng/Develops/NLP-Tools", 'stanford_nlp_lib')
     train_dir = os.path.join(data_dir, 'train')
     dev_dir = os.path.join(data_dir, 'dev')
     test_dir = os.path.join(data_dir, 'test')
@@ -195,6 +191,7 @@ if __name__ == '__main__':
         glob.glob(os.path.join(data_dir, '*/*.toks')),
         os.path.join(data_dir, 'vocab-cased.txt'),
         lowercase=False)
+
 
     vocab_path = os.path.join(data_dir, 'vocab-cased.txt')
     build_word2Vector(glove_path, data_dir, 'vocab-cased.txt')
